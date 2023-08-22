@@ -4,7 +4,7 @@ pipeline{
         DIRECTORY_PATH = '~./production/folder'
         TESTING_ENVIRONMENT = '~./testing/environment'
         PRODUCTION_ENVIRONMENT = '***Mitchell Bartolo***'
-        TO_LIST = ["mitchell.bartolo@gmail.com"]
+        TO_LIST = 'mitchell.bartolo@gmail.com'
     }
     stages{
         stage('Build'){
