@@ -23,7 +23,7 @@ pipeline{
                 //     body: "Unit and integration tests were successful"
                 //     //body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
                 // }
-                always{
+                success{
                     emailext body: 'Test Message',
                         subject: 'Test Subject',
                         to: 'mitchell.bartolo@gmail.com'
