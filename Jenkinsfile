@@ -20,8 +20,8 @@ pipeline{
                 always{
                     mail to: "mitchell.bartolo@gmail.com",
                     subject: "Unit and Integration Tests Notification - SUCCESS",
-                    //body: "Unit and integration tests were successful " ${BUILD_LOG, maxLines, escapeHtml}
-                    body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
+                    body: "Unit and integration tests were successful"
+                    //body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
                 }
                 failure{
                     mail to: "mitchell.bartolo@gmail.com",
