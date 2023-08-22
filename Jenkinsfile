@@ -17,7 +17,7 @@ pipeline{
                 echo "initiating unit and integration tests using Selenium"
             }
             post{
-                always{
+                SUCCESS{
                     mail to: "mitchell.bartolo@gmail.com",
                     subject: "Unit and Integration Tests Notification - SUCCESS",
                     body: "Unit and integration tests were successful"
