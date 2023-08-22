@@ -38,5 +38,10 @@ pipeline{
                 echo "Deploying to production environment $PRODUCTION_ENVIRONMENT"
             }
         }
+        stage('Complete'){
+            steps{
+                echo "Deploying to production environment $PRODUCTION_ENVIRONMENT"
+            }
+        }
     }
 }
