@@ -17,10 +17,15 @@ pipeline{
                 echo "initiating unit and integration tests using Selenium"
             }
             post{
-                SUCCESS{
+                success{
                     mail to: "mitchell.bartolo@gmail.com",
                     subject: "Unit and Integration Tests Notification - SUCCESS",
                     body: "Unit and integration tests were successful"
+                }
+                failure{
+                    mail to: "mitchell.bartolo@gmail.com",
+                    subject: "Unit and Integration Tests Notification - FAILURE",
+                    body: "Unit and integration tests failed"
                 }
             }
         }
