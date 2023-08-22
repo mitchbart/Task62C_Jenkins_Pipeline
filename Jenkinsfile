@@ -20,7 +20,7 @@ pipeline{
                 always{
                     mail to: "mitchell.bartolo@gmail.com",
                     subject: "Unit and Integration Tests Notification - SUCCESS",
-                    body: "Unit and integration tests were successful"
+                    body: "Unit and integration tests were successful ${BUILD_LOG, maxLines, escapeHtml}"
                 }
                 failure{
                     mail to: "mitchell.bartolo@gmail.com",
