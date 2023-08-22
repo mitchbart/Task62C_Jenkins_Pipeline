@@ -4,7 +4,6 @@ pipeline{
         DIRECTORY_PATH = '~./production/folder'
         TESTING_ENVIRONMENT = '~./testing/environment'
         PRODUCTION_ENVIRONMENT = '***Mitchell Bartolo***'
-        TO_LIST = 'mitchell.bartolo@gmail.com'
     }
     stages{
         stage('Build'){
@@ -36,7 +35,7 @@ pipeline{
             }
             post{
                 always{
-                    mail to: $TO_LIST,
+                    mail to: "mitchell.bartolo@gmail.com",
                     subject: "Security Scan Notification - SUCCESS",
                     body: "Security scan was successful"
                 }
