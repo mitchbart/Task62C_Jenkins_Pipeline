@@ -24,8 +24,7 @@ pipeline{
                 //     //body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
                 // }
                 success{
-                    emailext
-                        body: 'Unit and integration tests were successful ${BUILD_LOG, maxLines=9999, escapeHtml=false}',
+                    emailext body: 'Unit and integration tests were successful ${BUILD_LOG, maxLines=9999, escapeHtml=false}',
                         subject: 'Unit and Integration Tests Notification - SUCCESS',
                         to: 'mitchell.bartolo@gmail.com'
                     //body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
