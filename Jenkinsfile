@@ -17,24 +17,17 @@ pipeline{
                 echo "initiating unit and integration tests using Selenium"
             }
             post{
-                // always{
-                //     mail to: "mitchell.bartolo@gmail.com",
-                //     subject: "Unit and Integration Tests Notification - SUCCESS",
-                //     body: "Unit and integration tests were successful"
-                //     //body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
-                // }
                 success{
                     emailext attachLog: true,
-                        body: 'Unit and integration tests were successful ${BUILD_LOG, maxLines=9999, escapeHtml=false}',
+                        body: 'Unit and integration tests were successful',
                         subject: 'Unit and Integration Tests Notification - SUCCESS',
                         to: 'mitchell.bartolo@gmail.com'
-                        //attachmentsPattern: '${BUILD_LOG, maxLines=9999, escapeHtml=false}'
-                    //body:'''Hi, Please find below. ${BUILD_LOG_REGEX, regex="Project name:", linesBefore=0, linesAfter=10, maxMatches=5, showTruncatedLines=false, escapeHtml=true} Regards, DT ''',
                 }
                 failure{
-                    mail to: "mitchell.bartolo@gmail.com",
-                    subject: "Unit and Integration Tests Notification - FAILURE",
-                    body: "Unit and integration tests failed"
+                    emailext attachLog: true,
+                        body: 'Unit and integration tests were not successful',
+                        subject: 'Unit and Integration Tests Notification - FAILURE',
+                        to: 'mitchell.bartolo@gmail.com'
                 }
             }
         }
@@ -48,10 +41,17 @@ pipeline{
                 echo "performing security scan with CodeQL"
             }
             post{
-                always{
-                    mail to: "mitchell.bartolo@gmail.com",
-                    subject: "Security Scan Notification - SUCCESS",
-                    body: "Security scan was successful"
+                success{
+                    emailext attachLog: true,
+                        body: 'Security scan was successful',
+                        subject: 'Security Scan Notification - SUCCESS',
+                        to: 'mitchell.bartolo@gmail.com'
+                }
+                failure{
+                    emailext attachLog: true,
+                        body: 'Security scan was not successful',
+                        subject: 'Security Scan Notification - FAILURE',
+                        to: 'mitchell.bartolo@gmail.com'
                 }
             }
         }
@@ -65,10 +65,17 @@ pipeline{
                 echo "performing integration tests on staging environment"
             }
             post{
-                always{
-                    mail to: "mitchell.bartolo@gmail.com",
-                    subject: "Integration Tests on Staging Notification - SUCCESS",
-                    body: "Integration tests on staging were successful"
+                success{
+                    emailext attachLog: true,
+                        body: 'Integration tests on staging were successful',
+                        subject: 'Integration Tests on Staging Notification - SUCCESS',
+                        to: 'mitchell.bartolo@gmail.com'
+                }
+                failure{
+                    emailext attachLog: true,
+                        body: 'Integration tests on staging were not successful',
+                        subject: 'Integration Tests on Staging Notification - FAILURE',
+                        to: 'mitchell.bartolo@gmail.com'
                 }
             }
         }
@@ -80,9 +87,16 @@ pipeline{
     }
     post{
         success{
-            mail to: "mitchell.bartolo@gmail.com",
-            subject: "Pipeline was successful",
-            body: "Unit and integration tests were successful"
+            emailext attachLog: true,
+                body: 'Pipeline was successful',
+                subject: 'Pipeline - SUCCESS',
+                to: 'mitchell.bartolo@gmail.com'
         }
+        failure{
+            emailext attachLog: true,
+                body: 'Pipeline was not successful',
+                subject: 'Pipeline - FAILURE',
+                to: 'mitchell.bartolo@gmail.com'
+        } 
     }
 }
