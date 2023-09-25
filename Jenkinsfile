@@ -13,7 +13,6 @@ pipeline{
             }
         }
         stage('Unit and Integration Tests'){
-            
             steps{
                 echo "initiating unit and integration tests using Selenium"
             }
